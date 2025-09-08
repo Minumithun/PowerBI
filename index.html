@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Quest - Interactive Learning Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <h1>🎮 Power BI Quest</h1>
+                        <p>Interactive Dashboard Learning</p>
+                    </div>
+                    <div class="player-info">
+                        <input type="text" id="playerName" placeholder="Enter your name" class="name-input">
+                        <div class="stats">
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span id="totalPoints">0</span> Points
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-trophy"></i>
+                                <span id="badgeCount">0</span>/5 Badges
+                            </div>
+                        </div>
+                        <div class="progress-section">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="overallProgress"></div>
+                            </div>
+                            <span id="progressText">0% Complete</span>
+                        </div>
+                        <div class="header-buttons">
+                            <button id="resetBtn" class="btn btn-reset">
+                                <i class="fas fa-redo"></i> Reset Game
+                            </button>
+                            <button id="certificateBtn" class="btn btn-certificate" style="display: none;">
+                                <i class="fas fa-certificate"></i> Get Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="container">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-module="overview">
+                        <i class="fas fa-home"></i> Overview
+                    </button>
+                    <button class="nav-tab" data-module="data-connection">
+                        <i class="fas fa-database"></i> Data Connection
+                    </button>
+                    <button class="nav-tab" data-module="visualizations">
+                        <i class="fas fa-chart-bar"></i> Visualizations
+                    </button>
+                    <button class="nav-tab" data-module="formatting">
+                        <i class="fas fa-palette"></i> Formatting
+                    </button>
+                    <button class="nav-tab" data-module="interactivity">
+                        <i class="fas fa-mouse-pointer"></i> Interactivity
+                    </button>
+                    <button class="nav-tab" data-module="publishing">
+                        <i class="fas fa-share"></i> Publishing
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Badges Section -->
+        <section class="badges-section">
+            <div class="container">
+                <div class="badges-grid">
+                    <div class="badge locked" id="badge-data">
+                        <div class="badge-icon">🔗</div>
+                        <div class="badge-name">Data Master</div>
+                    </div>
+                    <div class="badge locked" id="badge-visual">
+                        <div class="badge-icon">📊</div>
+                        <div class="badge-name">Visual Expert</div>
+                    </div>
+                    <div class="badge locked" id="badge-design">
+                        <div class="badge-icon">🎨</div>
+                        <div class="badge-name">Design Guru</div>
+                    </div>
+                    <div class="badge locked" id="badge-interactive">
+                        <div class="badge-icon">⚡</div>
+                        <div class="badge-name">Interactive Pro</div>
+                    </div>
+                    <div class="badge locked" id="badge-publisher">
+                        <div class="badge-icon">🚀</div>
+                        <div class="badge-name">Publishing Hero</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Overview Module -->
+                <section id="overview" class="module active">
+                    <div class="module-header">
+                        <h2>🎯 Welcome to Power BI Quest!</h2>
+                        <p>Master dashboard creation through interactive learning</p>
+                    </div>
+
+                    <div class="content-grid">
+                        <div class="welcome-card">
+                            <h3>🌟 What You'll Learn</h3>
+                            <div class="features-grid">
+                                <div class="feature">
+                                    <i class="fas fa-database"></i>
+                                    <h4>Data Connection</h4>
+                                    <p>Import and connect multiple data sources</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h4>Visualizations</h4>
+                                    <p>Create compelling charts and graphs</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-palette"></i>
+                                    <h4>Formatting</h4>
+                                    <p>Design professional dashboards</p>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-mouse-pointer"></i>
+                                    <h4>Interactivity</h4>
+                                    <p>Add filters and dynamic elements</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="download-card">
+                            <h3>📁 Sample Data Files</h3>
+                            <p>Download these files to follow along:</p>
+                            <div class="download-links">
+                                <a href="data/hr-employees.csv" download class="download-btn">
+                                    <i class="fas fa-download"></i>
+                                    HR Employees Data
+                                </a>
+                                <a href="data/recruitment-metrics.csv" download class="download-btn">
+                                    <i class="fas fa-download"></i>
+                                    Recruitment Metrics
+                                </a>
+                                <a href="data/performance-data.csv" download class="download-btn">
+                                    <i class="fas fa-download"></i>
+                                    Performance Data
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="getting-started-card">
+                            <h3>🚀 Ready to Start?</h3>
+                            <p>Choose any module to begin your journey. No restrictions - learn at your own pace!</p>
+                            <div class="start-buttons">
+                                <button class="btn btn-primary" onclick="switchModule('data-connection')">
+                                    Start with Data Connection
+                                </button>
+                                <button class="btn btn-secondary" onclick="switchModule('visualizations')">
+                                    Jump to Visualizations
+                                </button>
+                            </div>
+                            <div class="prerequisites">
+                                <h4>✅ Prerequisites:</h4>
+                                <ul>
+                                    <li>Power BI Desktop installed</li>
+                                    <li>Sample data files downloaded</li>
+                                    <li>Keep this browser tab open alongside Power BI</li>
+                                    <li>Enter your name above for the certificate</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Data Connection Module -->
+                <section id="data-connection" class="module">
+                    <div class="module-header">
+                        <h2>🔗 Data Connection Mastery</h2>
+                        <p>Learn to import and connect data sources</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="dataProgress"></div>
+                            </div>
+                            <span id="dataStatus">0/4 Steps Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="steps-container">
+                        <div class="step" data-step="1" data-module="data">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-info">
+                                    <h3>Launch Power BI Desktop</h3>
+                                    <p>Open Power BI Desktop and start a new project</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+25 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Open Power BI Desktop on your computer</li>
+                                        <li>If you see a welcome screen, click "Get data" or select "Blank report"</li>
+                                        <li>You should now see the main Power BI interface with the ribbon menu at the top</li>
+                                        <li>Notice the three main panels: Report view (center), Visualizations (right), Fields (right)</li>
+                                    </ol>
+                                </div>
+                                <div class="tip-box">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <strong>Pro Tip:</strong> Make sure you have the latest version of Power BI Desktop for the best experience.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2" data-module="data">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-info">
+                                    <h3>Import HR Employees Data</h3>
+                                    <p>Connect to the HR employees CSV file</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+25 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Click "Get Data" in the Home ribbon</li>
+                                        <li>Select "Text/CSV" from the dropdown menu</li>
+                                        <li>Browse to your downloaded "hr-employees.csv" file</li>
+                                        <li>Click "Open" to see the data preview</li>
+                                        <li>Review the data and click "Load" to import it</li>
+                                    </ol>
+                                </div>
+                                <div class="expected-result">
+                                    <i class="fas fa-check-circle"></i>
+                                    <strong>Expected Result:</strong> You should see "hr-employees" appear in the Fields panel on the right with all the employee columns listed.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="3" data-module="data">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-info">
+                                    <h3>Add Recruitment Metrics</h3>
+                                    <p>Import the second data source</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+25 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Click "Get Data" again in the Home ribbon</li>
+                                        <li>Select "Text/CSV"</li>
+                                        <li>Choose "recruitment-metrics.csv" from your downloads</li>
+                                        <li>Preview the data and click "Load"</li>
+                                    </ol>
+                                </div>
+                                <div class="challenge-box">
+                                    <i class="fas fa-star"></i>
+                                    <strong>Challenge:</strong> Can you identify which columns might be used to link these two datasets together?
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="4" data-module="data">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <div class="step-info">
+                                    <h3>Add Performance Data</h3>
+                                    <p>Complete your data foundation</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+25 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Import "performance-data.csv" using the same process</li>
+                                        <li>Verify all three tables appear in the Fields panel</li>
+                                        <li>Expand each table to see the available columns</li>
+                                        <li>Your data foundation is now complete!</li>
+                                    </ol>
+                                </div>
+                                <div class="success-box" id="dataSuccess" style="display: none;">
+                                    <i class="fas fa-trophy"></i>
+                                    <strong>🎉 Congratulations!</strong> You've mastered data connection and earned the Data Master badge!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Visualizations Module -->
+                <section id="visualizations" class="module">
+                    <div class="module-header">
+                        <h2>📊 Visualization Mastery</h2>
+                        <p>Create stunning charts and visual elements</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="visualProgress"></div>
+                            </div>
+                            <span id="visualStatus">0/5 Steps Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="steps-container">
+                        <div class="step" data-step="1" data-module="visual">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-info">
+                                    <h3>Create Employee Count by Department</h3>
+                                    <p>Build your first column chart</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+50 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Look at the Visualizations panel on the right</li>
+                                        <li>Click on "Clustered Column Chart" (vertical bars icon)</li>
+                                        <li>From the hr-employees table, drag "Department" to the Axis field</li>
+                                        <li>Drag "Employee_ID" to the Values field (it will auto-count)</li>
+                                        <li>Watch your first chart appear!</li>
+                                    </ol>
+                                </div>
+                                <div class="tip-box">
+                                    <i class="fas fa-magic"></i>
+                                    <strong>Magic Moment:</strong> Power BI automatically counts employees when you drag Employee_ID to Values - no formulas needed!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2" data-module="visual">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-info">
+                                    <h3>Add Gender Distribution Pie Chart</h3>
+                                    <p>Show proportional data with a pie chart</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+50 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Click on empty space in your report canvas</li>
+                                        <li>Select "Pie Chart" from the visualizations panel</li>
+                                        <li>Drag "Gender" from hr-employees to the Legend field</li>
+                                        <li>Drag "Employee_ID" to the Values field</li>
+                                        <li>Resize the chart by dragging its corners</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="3" data-module="visual">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-info">
+                                    <h3>Create KPI Cards</h3>
+                                    <p>Display key metrics prominently</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+50 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Select "Card" visualization from the panel</li>
+                                        <li>Drag "Employee_ID" to the Fields area (shows total employees)</li>
+                                        <li>Create another card for "Salary" (shows average salary)</li>
+                                        <li>Position these cards at the top of your report</li>
+                                        <li>Cards are perfect for showing key numbers!</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="4" data-module="visual">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <div class="step-info">
+                                    <h3>Add Hiring Trend Line Chart</h3>
+                                    <p>Show trends over time</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+50 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Select "Line Chart" from visualizations</li>
+                                        <li>Drag "Hire_Date" from hr-employees to the Axis</li>
+                                        <li>Drag "Employee_ID" to Values</li>
+                                        <li>Power BI will show hiring trends over time</li>
+                                        <li>You can change the date hierarchy if needed</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="5" data-module="visual">
+                            <div class="step-header">
+                                <div class="step-number">5</div>
+                                <div class="step-info">
+                                    <h3>Create Employee Details Table</h3>
+                                    <p>Display detailed information</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+50 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Select "Table" visualization</li>
+                                        <li>Add these fields: Employee_Name, Department, Position, Salary</li>
+                                        <li>Resize the table to show the data clearly</li>
+                                        <li>You can sort by clicking column headers</li>
+                                    </ol>
+                                </div>
+                                <div class="success-box" id="visualSuccess" style="display: none;">
+                                    <i class="fas fa-trophy"></i>
+                                    <strong>🎉 Amazing!</strong> You've earned the Visual Expert badge!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Formatting Module -->
+                <section id="formatting" class="module">
+                    <div class="module-header">
+                        <h2>🎨 Design & Formatting Mastery</h2>
+                        <p>Make your dashboard look professional</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="formatProgress"></div>
+                            </div>
+                            <span id="formatStatus">0/4 Steps Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="steps-container">
+                        <div class="step" data-step="1" data-module="format">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-info">
+                                    <h3>Apply Consistent Colors</h3>
+                                    <p>Create a cohesive color scheme</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+30 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Select your column chart by clicking on it</li>
+                                        <li>Look for the Format pane (paint roller icon) on the right</li>
+                                        <li>Expand "Data colors" section</li>
+                                        <li>Choose consistent colors for each department</li>
+                                        <li>Apply similar colors to other charts</li>
+                                    </ol>
+                                </div>
+                                <div class="tip-box">
+                                    <i class="fas fa-palette"></i>
+                                    <strong>Design Tip:</strong> Use your company's brand colors for a professional look!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2" data-module="format">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-info">
+                                    <h3>Add Titles and Labels</h3>
+                                    <p>Make your visuals clear and informative</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+30 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Select each visual one at a time</li>
+                                        <li>In the Format pane, find "Title" section</li>
+                                        <li>Turn the title ON</li>
+                                        <li>Change the title text to be descriptive (e.g., "Employees by Department")</li>
+                                        <li>Adjust font size and color as needed</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="3" data-module="format">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-info">
+                                    <h3>Arrange Your Layout</h3>
+                                    <p>Organize visuals for maximum impact</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+30 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Drag visuals to reposition them</li>
+                                        <li>Resize by dragging corners and edges</li>
+                                        <li>Place KPI cards at the top in a row</li>
+                                        <li>Arrange charts in a logical grid below</li>
+                                        <li>Leave appropriate white space between elements</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="4" data-module="format">
+                            <div class="step-header">
+                                <div class="step-number">4</div>
+                                <div class="step-info">
+                                    <h3>Final Polish</h3>
+                                    <p>Add background and finishing touches</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+30 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Click on empty space in your report (deselect all visuals)</li>
+                                        <li>In the Format pane, look for "Page background"</li>
+                                        <li>Choose a subtle background color or image</li>
+                                        <li>Ensure all text remains readable</li>
+                                        <li>Your dashboard should now look professional!</li>
+                                    </ol>
+                                </div>
+                                <div class="success-box" id="formatSuccess" style="display: none;">
+                                    <i class="fas fa-trophy"></i>
+                                    <strong>🎉 Excellent!</strong> You've earned the Design Guru badge!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactivity Module -->
+                <section id="interactivity" class="module">
+                    <div class="module-header">
+                        <h2>⚡ Interactivity Mastery</h2>
+                        <p>Add filters and interactive elements</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="interactiveProgress"></div>
+                            </div>
+                            <span id="interactiveStatus">0/3 Steps Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="steps-container">
+                        <div class="step" data-step="1" data-module="interactive">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-info">
+                                    <h3>Add Department Slicer</h3>
+                                    <p>Create interactive filtering</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+75 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Click on empty space in your report</li>
+                                        <li>Select "Slicer" from the visualizations panel</li>
+                                        <li>Drag "Department" from hr-employees to the Field area</li>
+                                        <li>Position the slicer at the top of your dashboard</li>
+                                        <li>Test it by clicking different departments - watch other visuals update!</li>
+                                    </ol>
+                                </div>
+                                <div class="magic-box">
+                                    <i class="fas fa-magic"></i>
+                                    <strong>Magic Moment:</strong> Click on different departments and watch all your visuals filter automatically!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2" data-module="interactive">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-info">
+                                    <h3>Add Date Range Filter</h3>
+                                    <p>Enable time-based filtering</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+75 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Add another "Slicer" visualization</li>
+                                        <li>Drag "Hire_Date" to the Field area</li>
+                                        <li>In the Format pane, change slicer style to "Range slider"</li>
+                                        <li>Position it next to your department slicer</li>
+                                        <li>Test the date range filtering</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="3" data-module="interactive">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-info">
+                                    <h3>Test Cross-Filtering</h3>
+                                    <p>Explore advanced interactivity</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+75 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Try clicking on bars in your column chart - other visuals will filter</li>
+                                        <li>Click on pie chart segments to cross-filter</li>
+                                        <li>Use Ctrl+Click to select multiple items</li>
+                                        <li>Test combinations of slicers and chart interactions</li>
+                                        <li>Right-click on visuals to see additional options</li>
+                                    </ol>
+                                </div>
+                                <div class="challenge-box">
+                                    <i class="fas fa-star"></i>
+                                    <strong>Challenge:</strong> Can you find which department hired the most people in the last 6 months?
+                                </div>
+                                <div class="success-box" id="interactiveSuccess" style="display: none;">
+                                    <i class="fas fa-trophy"></i>
+                                    <strong>🎉 Outstanding!</strong> You've earned the Interactive Pro badge!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Publishing Module -->
+                <section id="publishing" class="module">
+                    <div class="module-header">
+                        <h2>🚀 Publishing Mastery</h2>
+                        <p>Save and share your dashboard</p>
+                        <div class="module-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="publishProgress"></div>
+                            </div>
+                            <span id="publishStatus">0/3 Steps Complete</span>
+                        </div>
+                    </div>
+
+                    <div class="steps-container">
+                        <div class="step" data-step="1" data-module="publish">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <div class="step-info">
+                                    <h3>Save Your Dashboard</h3>
+                                    <p>Preserve your hard work</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+40 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Press Ctrl+S or go to File → Save As</li>
+                                        <li>Choose a meaningful name like "HR Dashboard - [Your Name]"</li>
+                                        <li>Select an appropriate folder location</li>
+                                        <li>Click "Save" to store your .pbix file</li>
+                                        <li>Remember this location for future access!</li>
+                                    </ol>
+                                </div>
+                                <div class="tip-box">
+                                    <i class="fas fa-save"></i>
+                                    <strong>Best Practice:</strong> Save your work regularly to avoid losing progress!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="2" data-module="publish">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <div class="step-info">
+                                    <h3>Export Your Dashboard</h3>
+                                    <p>Learn sharing options</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Step (+40 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>📋 Step-by-Step Instructions:</h4>
+                                    <ol>
+                                        <li>Go to File → Export</li>
+                                        <li>Try "Export to PDF" - perfect for presentations</li>
+                                        <li>Try "Export to PowerPoint" - great for meetings</li>
+                                        <li>Try "Export to Image" - useful for emails</li>
+                                        <li>Each format serves different sharing needs</li>
+                                    </ol>
+                                </div>
+                                <div class="info-box">
+                                    <i class="fas fa-info-circle"></i>
+                                    <strong>Note:</strong> Publishing to Power BI Service requires a Pro license, but these export options work with the free version.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step" data-step="3" data-module="publish">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <div class="step-info">
+                                    <h3>Quest Complete!</h3>
+                                    <p>Celebrate your achievement</p>
+                                </div>
+                                <button class="complete-btn" onclick="completeStep(this)">
+                                    Complete Quest (+40 pts)
+                                </button>
+                            </div>
+                            <div class="step-content">
+                                <div class="instructions">
+                                    <h4>🎉 Congratulations! You've completed the Power BI Quest!</h4>
+                                    <p>You now have the skills to:</p>
+                                    <ul>
+                                        <li>✅ Connect and import data from multiple sources</li>
+                                        <li>✅ Create professional visualizations</li>
+                                        <li>✅ Format and design compelling dashboards</li>
+                                        <li>✅ Add interactive filters and slicers</li>
+                                        <li>✅ Save and share your dashboards</li>
+                                    </ul>
+                                </div>
+                                <div class="final-celebration" id="finalCelebration" style="display: none;">
+                                    <div class="celebration-content">
+                                        <h3>🏆 POWER BI MASTER ACHIEVED! 🏆</h3>
+                                        <p>You've earned all badges and mastered dashboard creation!</p>
+                                        <div class="final-stats">
+                                            <div class="stat-item">
+                                                <i class="fas fa-star"></i>
+                                                <span id="finalPoints">0</span> Total Points
+                                            </div>
+                                            <div class="stat-item">
+                                                <i class="fas fa-trophy"></i>
+                                                <span>5/5 Badges Earned</span>
+                                            </div>
+                                        </div>
+                                        <button id="downloadCertificate" class="btn btn-certificate-large" onclick="generateCertificate()">
+                                            <i class="fas fa-download"></i>
+                                            Download Your Certificate
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="success-box" id="publishSuccess" style="display: none;">
+                                    <i class="fas fa-trophy"></i>
+                                    <strong>🎉 Incredible!</strong> You've earned the Publishing Hero badge and completed the quest!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Certificate Modal -->
+        <div id="certificateModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeCertificateModal()">&times;</span>
+                <div class="certificate" id="certificate">
+                    <div class="certificate-header">
+                        <h1>🏆 CERTIFICATE OF COMPLETION 🏆</h1>
+                        <div class="certificate-subtitle">Power BI Dashboard Mastery Quest</div>
+                    </div>
+                    <div class="certificate-body">
+                        <p class="certificate-text">This is to certify that</p>
+                        <h2 class="certificate-name" id="certificateName">[Your Name]</h2>
+                        <p class="certificate-text">has successfully completed the</p>
+                        <h3 class="certificate-course">Power BI Dashboard Mastery Quest</h3>
+                        <p class="certificate-text">and has demonstrated proficiency in:</p>
+                        <div class="skills-grid">
+                            <div class="skill">✓ Data Connection & Import</div>
+                            <div class="skill">✓ Professional Visualizations</div>
+                            <div class="skill">✓ Dashboard Design & Formatting</div>
+                            <div class="skill">✓ Interactive Elements & Filtering</div>
+                            <div class="skill">✓ Publishing & Sharing</div>
+                            <div class="skill">✓ HR Analytics Best Practices</div>
+                        </div>
+                        <div class="certificate-footer">
+                            <div class="certificate-date">
+                                <p>Date of Completion</p>
+                                <p id="certificateDate">[Date]</p>
+                            </div>
+                            <div class="certificate-score">
+                                <p>Final Score</p>
+                                <p id="certificateScore">[Score] Points</p>
+                            </div>
+                        </div>
+                        <div class="certificate-signature">
+                            <p>Power BI Quest Certification Program</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="certificate-actions">
+                    <button onclick="downloadCertificateAsPDF()" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </button>
+                    <button onclick="downloadCertificateAsImage()" class="btn btn-secondary">
+                        <i class="fas fa-image"></i> Download Image
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
