@@ -9,3 +9,34 @@ Employee_ID,Employee_Name,Department,Gender,Position,Hire_Date,Salary,Performanc
 1008,Jessica Taylor,Marketing,Female,Digital Marketing Manager,2022-04-12,72000,4.3
 1009,Robert Anderson,IT,Male,Senior Developer,2021-09-30,95000,4.7
 1010,Amanda Martinez,Sales,Female,
+Employee_ID,Employee_Name,Department,Gender,Position,Hire_Date,Salary,Performance_Rating
+1001,John Smith,HR,Male,HR Manager,2022-01-15,75000,4.2
+1002,Sarah Johnson,IT,Female,Software Developer,2022-02-20,85000,4.8
+1003,Mike Davis,Sales,Male,Sales Representative,2021-11-10,55000,3.9
+1004,Emily Brown,Marketing,Female,Marketing Specialist,2022-03-05,62000,4.5
+1005,David Wilson,IT,Male,System Administrator,2021-12-18,70000,4.1
+1006,Lisa Garcia,HR,Female,HR Coordinator,2022-01-28,58000,4.6
+1007,James Miller,Sales,Male,Account Manager,2021-10-15,65000,4.0
+1008,Jessica Taylor,Marketing,Female,Digital Marketing Manager,2022-04-12,72000,4.3
+1009,Robert Anderson,IT,Male,Senior Developer,2021-09-30,95000,4.7
+1010,Amanda Martinez,Sales,Female,Sales Manager,2022-02-14,78000,4.4
+1011,Christopher Lee,HR,Male,Recruiter,2021-11-22,52000,3.8
+1012,Jennifer White,Marketing,Female,Content Manager,2022-03-18,65000,4.2
+1013,Matthew Harris,IT,Male,DevOps Engineer,2021-08-25,88000,4.9
+1014,Ashley Clark,Sales,Female,Business Development,2022-01-07,60000,4.0
+1015,Daniel Lewis,HR,Male,HR Business Partner,2021-12-05,68000,4.3
+1016,Michelle Walker,Marketing,Female,Brand Manager,2022-04-20,70000,4.6
+1017,Andrew Hall,IT,Male,Data Analyst,2021-07-14,75000,4.1
+1018,Stephanie Young,Sales,Female,Regional Sales Lead,2022-02-28,82000,4.4
+1019,Kevin King,HR,Male,Training Coordinator,2021-10-08,55000,3.9
+1020,Nicole Wright,Marketing,Female,Social Media Manager,2022-03-25,58000,4.5
+1021,Thomas Brown,IT,Male,Security Specialist,2022-05-10,80000,4.2
+1022,Rachel Green,Sales,Female,Sales Coordinator,2021-12-30,48000,4.0
+1023,Brandon Miller,HR,Male,Compensation Analyst,2022-01-20,63000,4.3
+1024,Samantha Davis,Marketing,Female,Product Marketing Manager,2021-11-15,74000,4.4
+1025,Justin Wilson,IT,Male,Cloud Architect,2022-04-05,98000,4.6
+1026,Maria Rodriguez,Sales,Female,Customer Success Manager,2021-09-12,72000,4.1
+1027,Ryan Johnson,HR,Male,HRIS Specialist,2022-02-25,59000,4.0
+1028,Alexis Thompson,Marketing,Female,Marketing Analyst,2021-10-30,61000,4.5
+1029,Derek Anderson,IT,Male,Technical Lead,2022-03-15,92000,4.7
+1030,Lauren Martinez,Sales,Female,Inside Sales Representative,2021-08-18,53000,4.2
