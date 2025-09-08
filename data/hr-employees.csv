@@ -1,0 +1,11 @@
+Employee_ID,Employee_Name,Department,Gender,Position,Hire_Date,Salary,Performance_Rating
+1001,John Smith,HR,Male,HR Manager,2022-01-15,75000,4.2
+1002,Sarah Johnson,IT,Female,Software Developer,2022-02-20,85000,4.8
+1003,Mike Davis,Sales,Male,Sales Representative,2021-11-10,55000,3.9
+1004,Emily Brown,Marketing,Female,Marketing Specialist,2022-03-05,62000,4.5
+1005,David Wilson,IT,Male,System Administrator,2021-12-18,70000,4.1
+1006,Lisa Garcia,HR,Female,HR Coordinator,2022-01-28,58000,4.6
+1007,James Miller,Sales,Male,Account Manager,2021-10-15,65000,4.0
+1008,Jessica Taylor,Marketing,Female,Digital Marketing Manager,2022-04-12,72000,4.3
+1009,Robert Anderson,IT,Male,Senior Developer,2021-09-30,95000,4.7
+1010,Amanda Martinez,Sales,Female,
